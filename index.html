@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DermAvenue Skin & Hair Clinic — Dr. Ajay Nimbalkar | Khar West, Mumbai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ===========================
+     TOKENS & RESET
+  =========================== */
+  :root {
+    --white:      #FFFFFF;
+    --teal:       #0A5C5A;
+    --teal-deep:  #073d3b;
+    --teal-mid:   #0e7370;
+    --teal-light: #E8F2F1;
+    --sage:       #8FAF9F;
+    --gold:       #C5A880;
+    --gold-light: #e8d9c4;
+    --gold-deep:  #a6895e;
+    --ink:        #1a1a1a;
+    --ink-soft:   #3d3d3d;
+    --ink-muted:  #717171;
+    --surface:    #F9FBFA;
+    --border:     rgba(10,92,90,0.12);
+
+    --serif:  'Playfair Display', Georgia, serif;
+    --sans:   'Plus Jakarta Sans', system-ui, sans-serif;
+
+    --shadow-card: 0 4px 32px rgba(10,92,90,0.08), 0 1px 4px rgba(10,92,90,0.05);
+    --shadow-hover: 0 12px 48px rgba(10,92,90,0.14), 0 2px 8px rgba(10,92,90,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===========================
+     NAVIGATION
+  =========================== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(10,92,90,0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .nav.scrolled {
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 2px 24px rgba(10,92,90,0.1);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-logo-mark {
+    width: 40px; height: 40px;
+    background: var(--teal);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark svg { width: 22px; height: 22px; }
+  .nav-brand-text { line-height: 1.2; }
+  .nav-brand-name {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.01em;
+  }
+  .nav-brand-sub {
+    font-size: 0.68rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 16px rgba(10,92,90,0.25);
+  }
+  .btn-primary:hover {
+    background: var(--teal-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(10,92,90,0.35);
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: transparent;
+    color: var(--teal);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1.5px solid var(--teal);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .btn-outline:hover {
+    background: var(--teal-light);
+    transform: translateY(-1px);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* ===========================
+     HERO
+  =========================== */
+  .hero {
+    min-height: 100svh;
+    padding: 0 clamp(1.25rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%; right: -5%;
+    width: 55%;
+    height: 110%;
+    background: radial-gradient(ellipse at top right, #d6ecea 0%, #eef6f5 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -5%; left: -5%;
+    width: 30%;
+    height: 50%;
+    background: radial-gradient(ellipse, #f5ede3 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal-light);
+    border: 1px solid rgba(10,92,90,0.2);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  .hero-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 600;
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-heading em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .hero-clinic-name {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+    font-weight: 500;
+    color: var(--teal-mid);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tagline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .tagline-word {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+  .tagline-sep {
+    width: 1px;
+    height: 18px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .btn-primary-lg {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+  .btn-outline-lg {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    box-shadow: 0 2px 8px rgba(10,92,90,0.06);
+  }
+  .badge-icon { color: var(--teal); font-size: 0.9rem; }
+  .badge-star { color: #f59e0b; }
+
+  /* Hero Visual Panel */
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .clinic-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .clinic-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .clinic-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  .clinic-avatar {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .clinic-verified {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #2e7d32;
+  }
+  .clinic-verified svg { width: 12px; height: 12px; }
+  .clinic-dr-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .clinic-dr-title {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .clinic-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .clinic-stat { text-align: center; }
+  .clinic-stat-num {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+  .clinic-stat-label {
+    font-size: 0.68rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  /* Hours mini card */
+  .hours-card {
+    background: var(--teal);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem;
+    color: var(--white);
+  }
+  .hours-card-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0;
+    font-size: 0.8rem;
+  }
+  .hours-row + .hours-row {
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hours-day { font-weight: 500; color: rgba(255,255,255,0.8); }
+  .hours-time { font-weight: 600; color: var(--white); font-size: 0.75rem; }
+  .hours-fee-badge {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hours-fee-label { font-size: 0.72rem; color: rgba(255,255,255,0.65); font-weight: 500; }
+  .hours-fee-val {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+  }
+
+  /* ===========================
+     SECTION COMMONS
+  =========================== */
+  section { padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem); }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subheading {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ===========================
+     SERVICES SECTION
+  =========================== */
+  .services { background: var(--surface); }
+
+  .services-header { margin-bottom: 2.5rem; }
+
+  .tab-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .tab-btn {
+    padding: 9px 20px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    color: var(--ink-soft);
+    transition: all 0.25s ease;
+  }
+  .tab-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+  .tab-btn.active {
+    background: var(--teal);
+    color: var(--white);
+    border-color: var(--teal);
+    box-shadow: 0 4px 16px rgba(10,92,90,0.25);
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .service-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .service-item:hover {
+    border-color: rgba(10,92,90,0.3);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+  }
+  .service-icon-wrap {
+    width: 44px; height: 44px;
+    background: var(--teal-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  .service-item:hover .service-icon-wrap { background: rgba(10,92,90,0.15); }
+  .service-icon-wrap svg { width: 20px; height: 20px; color: var(--teal); }
+  .service-item-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 0.25rem;
+  }
+  .service-item-note {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  /* ===========================
+     CREDENTIALS / TIMELINE
+  =========================== */
+  .credentials { background: var(--white); }
+
+  .credentials-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--teal) 0%, var(--gold) 60%, rgba(197,168,128,0.2) 100%);
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 6px;
+    width: 12px; height: 12px;
+    background: var(--white);
+    border: 2.5px solid var(--teal);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .timeline-item.gold-node::before { border-color: var(--gold); }
+
+  .timeline-year {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-title {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+  .timeline-sub {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  /* Certs & memberships */
+  .cert-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .cert-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: all 0.3s;
+  }
+  .cert-card:hover {
+    border-color: rgba(10,92,90,0.25);
+    box-shadow: var(--shadow-card);
+  }
+  .cert-badge-icon {
+    width: 48px; height: 48px;
+    background: var(--teal);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .cert-badge-icon svg { width: 22px; height: 22px; color: var(--white); }
+  .cert-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .cert-sub { font-size: 0.76rem; color: var(--ink-muted); }
+
+  .lgbtq-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+    border: 1px solid rgba(219,39,119,0.2);
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #9d174d;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .lgbtq-rainbow {
+    display: flex;
+    gap: 2px;
+  }
+  .lgbtq-rainbow span {
+    width: 5px; height: 18px;
+    border-radius: 2px;
+  }
+
+  /* ===========================
+     TESTIMONIALS
+  =========================== */
+  .testimonials { background: var(--teal-deep); }
+  .testimonials .section-label { color: var(--gold-light); }
+  .testimonials .section-label::before { background: var(--gold-light); }
+  .testimonials .section-heading { color: var(--white); }
+  .testimonials .section-subheading { color: rgba(255,255,255,0.65); }
+
+  .testimonials-scroll {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 1024px) {
+    .testimonials-scroll { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .testimonials-scroll { grid-template-columns: 1fr; }
+  }
+
+  .tcard {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  .tcard:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(197,168,128,0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  }
+  .tcard-quote {
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--gold);
+    font-family: var(--serif);
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+  .tcard-text {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .tcard-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tcard-author {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.15rem;
+  }
+  .tcard-source {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .tcard-stars { color: #f59e0b; font-size: 0.8rem; letter-spacing: 1px; }
+
+  /* ===========================
+     LOCATION & CONTACT
+  =========================== */
+  .contact { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .contact-item-icon {
+    width: 46px; height: 46px;
+    background: var(--teal-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-item-icon svg { width: 20px; height: 20px; color: var(--teal); }
+  .contact-item-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.25rem;
+  }
+  .contact-item-val {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .contact-item-sub {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    margin-top: 0.1rem;
+  }
+
+  /* Mock Map */
+  .map-container {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    height: 380px;
+    position: relative;
+    background: #e8f0e9;
+  }
+  .map-svg-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .map-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .map-overlay-pin {
+    width: 36px; height: 36px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .map-overlay-pin svg { width: 18px; height: 18px; color: var(--white); }
+  .map-overlay-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+  .map-overlay-addr { font-size: 0.72rem; color: var(--ink-muted); line-height: 1.4; }
+  .map-directions-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 8px 16px;
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .map-directions-btn:hover { background: var(--teal-deep); }
+
+  /* Hours table */
+  .hours-table-section { margin-top: 2rem; }
+  .hours-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+  }
+  .hours-table tr td {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+  .hours-table tr td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--surface);
+    border-radius: 8px 0 0 8px;
+  }
+  .hours-table tr td:last-child {
+    color: var(--teal-mid);
+    font-weight: 500;
+    background: var(--surface);
+    border-radius: 0 8px 8px 0;
+    text-align: right;
+  }
+  .hours-table tr.sunday td {
+    color: var(--ink-muted);
+  }
+  .hours-table tr.sunday td:last-child {
+    color: var(--ink-muted);
+  }
+  .open-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ===========================
+     SOCIAL & LINKS
+  =========================== */
+  .social-links { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    color: var(--ink-soft);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .social-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); transform: translateY(-1px); }
+  .social-btn svg { width: 16px; height: 16px; }
+
+  /* ===========================
+     BOOKING CTA BAND
+  =========================== */
+  .booking-band {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 60%, #1a7a77 100%);
+    padding: 5rem clamp(1.25rem, 5vw, 5rem);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .booking-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E") repeat;
+    pointer-events: none;
+  }
+  .booking-band-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+  .booking-band-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .booking-band-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .booking-band-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2.5rem;
+    line-height: 1.65;
+  }
+  .booking-band-fee {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 2rem;
+  }
+  .booking-band-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--white);
+    color: var(--teal);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+  .btn-ghost-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .btn-ghost-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); transform: translateY(-2px); }
+
+  /* ===========================
+     FOOTER
+  =========================== */
+  footer {
+    background: #0c1a19;
+    color: rgba(255,255,255,0.7);
+    padding: 3rem clamp(1.25rem, 5vw, 5rem) 2rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .footer-brand-tag {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1rem;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+  }
+  .footer-col-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-links a { font-size: 0.83rem; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-reg {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-copyright { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+  .footer-compliance {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .footer-compliance a { font-size: 0.72rem; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+  .footer-compliance a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ===========================
+     MOBILE NAV DRAWER
+  =========================== */
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+  }
+  .mobile-nav-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(4px);
+  }
+  .mobile-nav-drawer {
+    position: absolute;
+    top: 0; right: 0;
+    width: min(320px, 90vw);
+    height: 100%;
+    background: var(--white);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem 1.75rem;
+    overflow-y: auto;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+  }
+  .mobile-nav.open { pointer-events: all; }
+  .mobile-nav.open .mobile-nav-overlay { opacity: 1; }
+  .mobile-nav.open .mobile-nav-drawer { transform: translateX(0); }
+
+  .mobile-nav-close {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+  }
+  .close-btn {
+    width: 36px; height: 36px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+  .close-btn:hover { background: var(--teal-light); color: var(--teal); }
+  .mobile-nav-links { list-style: none; display: flex; flex-direction: column; }
+  .mobile-nav-links li { border-bottom: 1px solid var(--border); }
+  .mobile-nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .mobile-nav-links a:hover { color: var(--teal); }
+  .mobile-nav-cta { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+
+  /* ===========================
+     RESPONSIVE
+  =========================== */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; padding-top: 90px; min-height: auto; padding-bottom: 3rem; }
+    .hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .credentials-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero-visual { grid-template-columns: 1fr; }
+    .testimonials-scroll { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .footer-compliance { flex-wrap: wrap; gap: 1rem; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-actions { flex-direction: column; }
+    .btn-primary-lg, .btn-outline-lg { width: 100%; justify-content: center; }
+    .booking-band-actions { flex-direction: column; align-items: center; }
+    .btn-white, .btn-ghost-white { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.1ms !important; }
+  }
+
+  /* ===========================
+     LEGAL MODALS
+  =========================== */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(10, 40, 38, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--gold-light);
+    box-shadow: 0 24px 80px rgba(10,40,38,0.22), 0 4px 16px rgba(10,40,38,0.1);
+    width: 100%;
+    max-width: 560px;
+    max-height: 90svh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+    transform: translateY(16px) scale(0.98);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .modal-backdrop.open .modal-box {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 32px; height: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--ink-muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: all 0.2s;
+    padding: 0;
+  }
+  .modal-close:hover {
+    background: var(--teal-light);
+    color: var(--teal);
+    border-color: rgba(10,92,90,0.3);
+  }
+  .modal-gold-rule {
+    width: 36px; height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+  }
+  .modal-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--teal-deep);
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+    padding-right: 2rem;
+  }
+  .modal-body p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .modal-body p:last-child { margin-bottom: 0; }
+  .modal-body strong { color: var(--teal); font-weight: 600; }
+  .modal-footer-note {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="nav" id="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+        <path d="M8 12h8M12 8v8"/>
+      </svg>
+    </div>
+    <div class="nav-brand-text">
+      <div class="nav-brand-name">DermAvenue</div>
+      <div class="nav-brand-sub">Skin & Hair Clinic · Khar West</div>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#credentials">About Dr. Ajay</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="tel:09665669966" class="btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
+      Call Clinic
+    </a>
+  </div>
+
+  <button class="hamburger" onclick="openMobileNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-close">
+      <button class="close-btn" onclick="closeMobileNav()" aria-label="Close menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#services" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="#credentials" onclick="closeMobileNav()">About Dr. Ajay</a></li>
+      <li><a href="#testimonials" onclick="closeMobileNav()">Patient Reviews</a></li>
+      <li><a href="#contact" onclick="closeMobileNav()">Contact & Hours</a></li>
+    </ul>
+    <div class="mobile-nav-cta">
+      <a href="https://wa.me/919665669966?text=Hi%20DermAvenue%2C%20I%20would%20like%20to%20schedule%20a%20consultation%20with%20Dr.%20Ajay%20Nimbalkar.%20Please%20let%20me%20know%20the%20available%20slots." target="_blank" class="btn-primary" style="justify-content:center; padding: 14px 24px; font-size:0.9rem;">Book via WhatsApp</a>
+      <a href="tel:09665669966" class="btn-outline" style="justify-content:center; padding: 14px 24px; font-size:0.9rem;">Call: 09665669966</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      Khar West, Mumbai · Est. 2017
+    </div>
+
+    <h1 class="hero-heading">
+      Expert Skin & Hair<br>
+      Care by <em>Dr. Ajay<br>Nimbalkar</em>
+    </h1>
+
+    <p class="hero-clinic-name">Dr. Ajay Nimbalkar — DermAvenue Skin & Hair Clinic</p>
+
+    <div class="hero-tagline">
+      <span class="tagline-word">Predicted</span>
+      <span class="tagline-sep"></span>
+      <span class="tagline-word">Precise</span>
+      <span class="tagline-sep"></span>
+      <span class="tagline-word">Confident Results</span>
+    </div>
+
+    <p class="hero-desc">Expert in Facial Sculpting, Advanced Hair Restoration, and Clinical Dermatology. Over 15 years of trusted care — combining medical precision with an aesthetic sensibility that delivers results you can see and feel confident about.</p>
+
+    <div class="hero-actions">
+      <a href="https://wa.me/919665669966?text=Hi%20DermAvenue%2C%20I%20would%20like%20to%20schedule%20a%20consultation%20with%20Dr.%20Ajay%20Nimbalkar.%20Please%20let%20me%20know%20the%20available%20slots." target="_blank" rel="noopener" class="btn-primary btn-primary-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book via WhatsApp
+      </a>
+      <a href="tel:09665669966" class="btn-outline btn-outline-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
+        Call: 09665669966
+      </a>
+    </div>
+
+    <div class="hero-badges">
+      <div class="badge">
+        <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        15+ Years Experience
+      </div>
+      <div class="badge">
+        <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        MMC Reg. No: 2013062115
+      </div>
+      <div class="badge">
+        <span class="badge-star">★</span>
+        4.8 on Google · 175+ Reviews
+      </div>
+      <div class="badge">
+        <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        15k+ Instagram Community
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <!-- Doctor Card -->
+    <div class="clinic-card">
+      <div class="clinic-card-header">
+        <div class="clinic-avatar">AN</div>
+        <div class="clinic-verified">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Verified Doctor
+        </div>
+      </div>
+      <div class="clinic-dr-name">Dr. Ajay Nimbalkar</div>
+      <div class="clinic-dr-title">MD — Dermatology, Venereology & Leprosy<br>Fellowship — Cosmetic Dermatology & Hair Transplant Surgery</div>
+      <div class="clinic-stats">
+        <div class="clinic-stat">
+          <div class="clinic-stat-num">15+</div>
+          <div class="clinic-stat-label">Years in Practice</div>
+        </div>
+        <div class="clinic-stat">
+          <div class="clinic-stat-num">4.8★</div>
+          <div class="clinic-stat-label">Google Rating</div>
+        </div>
+        <div class="clinic-stat">
+          <div class="clinic-stat-num">15k+</div>
+          <div class="clinic-stat-label">Instagram Followers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hours Card -->
+    <div class="hours-card">
+      <div class="hours-card-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Clinic Hours
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Mon – Thu</span>
+        <span class="hours-time">11AM–3PM &amp; 5–8PM</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Fri – Sat</span>
+        <span class="hours-time">11:00 AM – 8:00 PM</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Sunday</span>
+        <span class="hours-time">3:00 PM – 5:00 PM</span>
+      </div>
+      <div class="hours-fee-badge">
+        <span class="hours-fee-label">Consultation Fee</span>
+        <span class="hours-fee-val">₹1,500</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== SERVICES ==================== -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="section-label">What We Treat</div>
+    <h2 class="section-heading">Comprehensive Skin &amp;<br>Hair Services</h2>
+    <p class="section-subheading">From clinical dermatology to advanced cosmetic procedures — each treatment is personalised, evidence-based, and delivered with precision care.</p>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab(event, 'aesthetic')">Aesthetic & Facial Sculpting</button>
+    <button class="tab-btn" onclick="switchTab(event, 'hair')">Hair Restoration</button>
+    <button class="tab-btn" onclick="switchTab(event, 'clinical')">Clinical Dermatology</button>
+    <button class="tab-btn" onclick="switchTab(event, 'advanced')">Advanced Skin Therapies</button>
+  </div>
+
+  <!-- Tab: Aesthetic -->
+  <div class="tab-panel active" id="tab-aesthetic">
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 0 1 4 4c0 2-1.5 3.5-3 4.5V22H11V10.5C9.5 9.5 8 8 8 6a4 4 0 0 1 4-4z"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Botox Injections</div>
+          <div class="service-item-note">Precise neurotoxin therapy for dynamic line relaxation and facial lifting</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Dermal / Cutaneous Fillers</div>
+          <div class="service-item-note">Volume restoration and contouring using premium HA fillers</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Cheek Augmentation</div>
+          <div class="service-item-note">Structural definition and midface volume enhancement</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22c-4-4-8-8-8-12a8 8 0 1 1 16 0c0 4-4 8-8 12z"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Lip Augmentation</div>
+          <div class="service-item-note">Natural-looking lip volumisation and border definition</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l14 9-14 9V3z"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Brow Lift</div>
+          <div class="service-item-note">Non-surgical brow elevation for a refreshed, youthful expression</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Anti-Aging & Facial Rejuvenation</div>
+          <div class="service-item-note">Comprehensive age-reversal protocols tailored to your skin type</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: Hair -->
+  <div class="tab-panel" id="tab-hair">
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3c0 11 8 16 9 16s9-5 9-16"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">FUE Hair Transplant</div>
+          <div class="service-item-note">Follicular Unit Extraction for permanent, natural hair restoration</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Acell Matrix Hair Transplantation</div>
+          <div class="service-item-note">Advanced regenerative matrix technology for superior graft survival</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Hair Loss & Thinning Treatments</div>
+          <div class="service-item-note">Medical-grade PRP, minoxidil protocols, and targeted therapies</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Trichologist Consultations</div>
+          <div class="service-item-note">Scalp analysis, hair-pull testing, and personalised hair health plans</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: Clinical -->
+  <div class="tab-panel" id="tab-clinical">
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Acne & Pimples Treatment</div>
+          <div class="service-item-note">Active acne control through topical, oral, and procedural approaches</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Acne Scar Repair</div>
+          <div class="service-item-note">Laser resurfacing, subcision, and RF microneedling for scar remodelling</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Chronic Skin Allergy</div>
+          <div class="service-item-note">Comprehensive allergy workup and long-term management protocols</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v-1.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10v1.5c0 .83-.67 1.5-1.5 1.5S7 7.33 7 6.5 7.67 5 8.5 5z"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Skin Rash, Eczema & Psoriasis</div>
+          <div class="service-item-note">Expert diagnosis and biologic/topical management of inflammatory skin disorders</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Bacterial Skin Infections</div>
+          <div class="service-item-note">Targeted antibiotic therapy for folliculitis, cellulitis, and related conditions</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Pediatric Dermatology</div>
+          <div class="service-item-note">Gentle, child-friendly care for skin conditions affecting infants and children</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: Advanced -->
+  <div class="tab-panel" id="tab-advanced">
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Glutathione for Skin Brightening</div>
+          <div class="service-item-note">IV & oral glutathione protocols for luminosity and even skin tone</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 7 23 1 17 1"/><line x1="23" y1="1" x2="16" y2="8"/><polyline points="1 17 1 23 7 23"/><line x1="1" y1="23" x2="8" y2="16"/><path d="M15 3c-4.97 0-9 4.03-9 9s4.03 9 9 9"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Laser Hair Removal</div>
+          <div class="service-item-note">Long-lasting hair reduction using advanced diode and Nd:YAG laser systems</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 0 1 9 9"/><path d="M3 12a9 9 0 0 1 9-9"/><path d="M12 21a9 9 0 0 1-9-9"/><path d="M21 12a9 9 0 0 1-9 9"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Laser Resurfacing</div>
+          <div class="service-item-note">Fractional CO₂ and Er:YAG laser for skin texture refinement</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Chemical Peeling</div>
+          <div class="service-item-note">Lactic Peel, Exosome Peel — customised exfoliation and renewal</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Microdermabrasion</div>
+          <div class="service-item-note">Crystal and diamond-tip exfoliation for refined skin texture</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Skin Polishing & Peeling</div>
+          <div class="service-item-note">Multi-step resurfacing for a visibly smooth, radiant complexion</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Black Spots & Stretch Marks Removal</div>
+          <div class="service-item-note">Pigmentation correction and striae treatment using targeted modalities</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="service-item-name">Corn Removal</div>
+          <div class="service-item-note">Painless, precise removal of corns and hyperkeratotic skin lesions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== CREDENTIALS ==================== -->
+<section class="credentials" id="credentials">
+  <div class="section-label">The Doctor Behind the Results</div>
+  <h2 class="section-heading">Academic Excellence &amp;<br>Clinical Expertise</h2>
+  <p class="section-subheading">A decade and a half of rigorous training, specialist fellowships, and hands-on practice — backed by national and international recognition.</p>
+
+  <div class="credentials-inner">
+    <!-- Education Timeline -->
+    <div>
+      <h3 style="font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:1.75rem;font-weight:600;letter-spacing:0.01em;">Education & Training Journey</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2011</div>
+          <div class="timeline-title">MBBS — Medical Degree</div>
+          <div class="timeline-sub">Dr. Panjabrao Deshmukh Memorial Medical College, Amravati — Foundation in Medicine & Surgery</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2014</div>
+          <div class="timeline-title">International Recognition</div>
+          <div class="timeline-sub">Certificate of Participation — American Academy of Dermatology (AAD Annual Meeting)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2016</div>
+          <div class="timeline-title">MD — Dermatology, Venereology &amp; Leprosy</div>
+          <div class="timeline-sub">NKP Salve Institute of Medical Sciences & Lata Mangeshkar Hospital, Nagpur — Post-Graduate Specialist Degree</div>
+        </div>
+        <div class="timeline-item gold-node">
+          <div class="timeline-year">Post-MD Fellowship</div>
+          <div class="timeline-title">Fellowship — Cosmetic Dermatology &amp; Hair Transplant Surgery</div>
+          <div class="timeline-sub">Cutis Academy of Cutaneous Sciences, Bangalore — Advanced surgical and aesthetic training</div>
+        </div>
+        <div class="timeline-item gold-node">
+          <div class="timeline-year">2017 – 2018</div>
+          <div class="timeline-title">Former Consultant Dermatologist &amp; Hair Transplant Surgeon</div>
+          <div class="timeline-sub">AIMS Hospital — Senior clinical practice in dermatology and hair restoration surgery</div>
+        </div>
+        <div class="timeline-item gold-node">
+          <div class="timeline-year">2018 – Present</div>
+          <div class="timeline-title">Founder & Lead Dermatologist</div>
+          <div class="timeline-sub">DermAvenue Skin & Hair Clinic, Khar West, Mumbai — Expert in facial sculpting and hair restoration</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications & Memberships -->
+    <div>
+      <h3 style="font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:1.75rem;font-weight:600;letter-spacing:0.01em;">Certifications, Memberships &amp; Clinic Philosophy</h3>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="cert-title">Proud Member — IADVL</div>
+            <div class="cert-sub">Indian Association of Dermatologists, Venereologists & Leprologists — India's premier dermatology body</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge-icon" style="background:var(--gold-deep);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div>
+            <div class="cert-title">American Academy of Dermatology</div>
+            <div class="cert-sub">Certificate of Participation — AAD Annual Meeting 2014 — International dermatology conference</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge-icon" style="background:#2e7d32;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div>
+            <div class="cert-title">Verified Medical Registration — MMC</div>
+            <div class="cert-sub">Maharashtra Medical Council Registration No: 2013062115 — Fully licensed and registered practitioner</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge-icon" style="background:#6d28d9;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
+          </div>
+          <div>
+            <div class="cert-title">Practo Verified & Highly Rated</div>
+            <div class="cert-sub">Top-rated dermatologist on Practo with consistently positive patient feedback and verified credentials</div>
+          </div>
+        </div>
+        <div class="lgbtq-badge">
+          <div class="lgbtq-rainbow">
+            <span style="background:#E53E3E;"></span>
+            <span style="background:#ED8936;"></span>
+            <span style="background:#ECC94B;"></span>
+            <span style="background:#48BB78;"></span>
+            <span style="background:#4299E1;"></span>
+            <span style="background:#9F7AEA;"></span>
+          </div>
+          <span>LGBTQ+ Friendly Clinic — A Safe, Inclusive, Judgment-Free Space for All Patients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== TESTIMONIALS ==================== -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Patient Voices</div>
+  <h2 class="section-heading">What Our Patients Say</h2>
+  <p class="section-subheading">Genuine words from real patients — 175+ verified reviews and a 4.8-star rating on Google Maps speak for themselves.</p>
+
+  <div class="testimonials-scroll">
+    <div class="tcard">
+      <div class="tcard-quote">&ldquo;</div>
+      <p class="tcard-text">I'd recommend Dr Nimbalkar for any skin condition. He is very patient and thorough. I recently visited the clinic, and he examined and diagnosed my condition immediately and provided the best solution for it. The staff is also really kind and understanding.</p>
+      <div class="tcard-footer">
+        <div>
+          <div class="tcard-author">Nandini Varma</div>
+          <div class="tcard-source">Google Maps · Verified</div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="tcard">
+      <div class="tcard-quote">&ldquo;</div>
+      <p class="tcard-text">Dr. Ajay is hands down one of the best dermats in town. Went there for treatment and was impressed with the results. The clinic is well equipped with all the necessary instruments and machinery. Definitely this clinic.</p>
+      <div class="tcard-footer">
+        <div>
+          <div class="tcard-author">Aditya Thete</div>
+          <div class="tcard-source">Google Maps · Verified</div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+      </div>
+    </div>
+
+
+    <div class="tcard">
+      <div class="tcard-quote">&ldquo;</div>
+      <p class="tcard-text">Dr. Ajay Nimbalkar is extremely capable and knowledgeable in his vocation — his counsel was incredibly helpful. Besides the amazing consultation, the staff at the clinic was very warm and diligent!</p>
+      <div class="tcard-footer">
+        <div>
+          <div class="tcard-author">Karan Pandav</div>
+          <div class="tcard-source">Google Maps · Verified</div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="tcard">
+      <div class="tcard-quote">&ldquo;</div>
+      <p class="tcard-text">Dr. Ajay is very kind and professional. I have visited 3 dermats prior to him but only he has done a great job to help me with my condition. Would totally recommend anyone to try him out because of his honest approach.</p>
+      <div class="tcard-footer">
+        <div>
+          <div class="tcard-author">Scott Franciss</div>
+          <div class="tcard-source">Google Maps · Verified</div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="tcard">
+      <div class="tcard-quote">&ldquo;</div>
+      <p class="tcard-text">Dr has been very helpful throughout my treatment when I had a skin condition and guided me through and through when I was panicking. I would recommend going here for the best treatment.</p>
+      <div class="tcard-footer">
+        <div>
+          <div class="tcard-author">Akeel Patel</div>
+          <div class="tcard-source">Google Maps · Verified</div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="tcard">
+      <div class="tcard-quote">&ldquo;</div>
+      <p class="tcard-text">I was experiencing alopecia in my beard, and Dr Ajay started treatment that showed noticeable progress within just two weeks. The doctor is extremely friendly and ensures that you feel comfortable throughout the process.</p>
+      <div class="tcard-footer">
+        <div>
+          <div class="tcard-author">Parth</div>
+          <div class="tcard-source">Practo · Verified Patient</div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating summary -->
+  <div style="margin-top:3rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="font-family:var(--serif);font-size:4rem;font-weight:700;color:var(--white);line-height:1;">4.8</div>
+      <div style="color:#f59e0b;font-size:1.2rem;margin:4px 0;">★★★★★</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:500;">175+ Google Reviews</div>
+    </div>
+    <div style="width:1px;height:80px;background:rgba(255,255,255,0.1);"></div>
+    <div style="display:flex;flex-direction:column;gap:8px;flex:1;min-width:200px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);width:30px;">5★</span>
+        <div style="flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="width:88%;height:100%;background:var(--gold);border-radius:3px;"></div></div>
+        <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);width:30px;text-align:right;">88%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);width:30px;">4★</span>
+        <div style="flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="width:9%;height:100%;background:var(--gold);border-radius:3px;opacity:0.6;"></div></div>
+        <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);width:30px;text-align:right;">9%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);width:30px;">3★</span>
+        <div style="flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;"><div style="width:3%;height:100%;background:var(--gold);border-radius:3px;opacity:0.4;"></div></div>
+        <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);width:30px;text-align:right;">3%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== CONTACT ==================== -->
+<section class="contact" id="contact">
+  <div class="section-label">Find Us</div>
+  <h2 class="section-heading">Location & Contact</h2>
+  <p class="section-subheading">Conveniently located in the heart of Khar West — well-connected by road and close to Khar Railway Station.</p>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Clinic Address</div>
+            <div class="contact-item-val">Bhagwanti Heights, 1st Floor,<br>14th Road, Khar West, Mumbai – 400052</div>
+            <div class="contact-item-sub">Near Farmers Café · Above Saroj Fabrics · Bhagwanti Heights</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Phone / WhatsApp</div>
+            <a href="tel:09665669966" class="contact-item-val" style="color:var(--teal);">09665669966</a>
+            <div class="contact-item-sub">Call or WhatsApp for appointments and queries</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Consultation Fee</div>
+            <div class="contact-item-val">₹1,500 per consultation</div>
+            <div class="contact-item-sub">Book on Practo for confirmed slot & reminders</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hours Table -->
+      <div class="hours-table-section">
+        <h4 style="font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:1rem;">Operating Hours</h4>
+        <table class="hours-table">
+          <tr>
+            <td>Monday – Thursday</td>
+            <td>11:00 AM – 3:00 PM &amp; 5:00 PM – 8:00 PM <span class="open-pill">Open</span></td>
+          </tr>
+          <tr>
+            <td>Friday – Saturday</td>
+            <td>11:00 AM – 8:00 PM <span class="open-pill">Open</span></td>
+          </tr>
+          <tr class="sunday">
+            <td>Sunday</td>
+            <td>3:00 PM – 5:00 PM</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Social Links -->
+      <div class="social-links">
+        <a href="https://www.instagram.com/dr.face_sculptor?igsh=MXY2NDhmcmllNmJkNQ==&utm_source=qr" target="_blank" rel="noopener" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.linkedin.com/in/dr-ajay-nimbalkar-dermavenue-aesthetic-ab9930145/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BVbRRzr6%2BSA%2B%2FnzUHn%2FnsFA%3D%3D" target="_blank" rel="noopener" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://youtube.com/@dr.face_sculptor?si=rc1kZNrIW_rXzueq" target="_blank" rel="noopener" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          YouTube
+        </a>
+        <a href="https://www.practo.com/mumbai/doctor/dr-ajay-nimbalkar-dermatologist" target="_blank" rel="noopener" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Practo Profile
+        </a>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="map-container">
+      <!-- Stylized SVG Map Illustration -->
+      <svg width="100%" height="100%" viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+        <!-- Background -->
+        <rect width="500" height="380" fill="#e8f0e9"/>
+        <!-- Road grid -->
+        <rect x="0" y="80" width="500" height="24" fill="#d4ddd5" rx="0"/>
+        <rect x="0" y="170" width="500" height="20" fill="#d4ddd5"/>
+        <rect x="0" y="260" width="500" height="20" fill="#d4ddd5"/>
+        <rect x="60" y="0" width="20" height="380" fill="#d4ddd5"/>
+        <rect x="180" y="0" width="16" height="380" fill="#d4ddd5"/>
+        <rect x="310" y="0" width="20" height="380" fill="#d4ddd5"/>
+        <rect x="420" y="0" width="16" height="380" fill="#d4ddd5"/>
+        <!-- Road labels -->
+        <text x="88" y="96" fill="#9aada0" font-size="8" font-family="sans-serif" font-weight="600">13th ROAD</text>
+        <text x="88" y="183" fill="#9aada0" font-size="8" font-family="sans-serif" font-weight="600">14th ROAD</text>
+        <text x="88" y="273" fill="#9aada0" font-size="8" font-family="sans-serif" font-weight="600">15th ROAD</text>
+        <text x="63" y="70" fill="#9aada0" font-size="7" font-family="sans-serif" writing-mode="vertical-lr" transform="rotate(0)">S.V. ROAD</text>
+
+        <!-- Blocks -->
+        <rect x="88" y="108" width="80" height="52" rx="4" fill="#d0dbd2"/>
+        <rect x="196" y="108" width="100" height="52" rx="4" fill="#d0dbd2"/>
+        <rect x="88" y="198" width="80" height="52" rx="4" fill="#d0dbd2"/>
+        <rect x="196" y="198" width="100" height="52" rx="4" fill="#c5d5c7"/>
+        <rect x="338" y="108" width="68" height="52" rx="4" fill="#d0dbd2"/>
+        <rect x="338" y="198" width="68" height="52" rx="4" fill="#d0dbd2"/>
+        <rect x="88" y="288" width="80" height="52" rx="4" fill="#d0dbd2"/>
+        <rect x="196" y="288" width="100" height="52" rx="4" fill="#d0dbd2"/>
+        <rect x="338" y="288" width="68" height="52" rx="4" fill="#d0dbd2"/>
+
+        <!-- Highlight our block -->
+        <rect x="196" y="190" width="100" height="68" rx="6" fill="rgba(10,92,90,0.12)" stroke="#0A5C5A" stroke-width="2"/>
+
+        <!-- Pin shadow -->
+        <ellipse cx="246" cy="222" rx="14" ry="5" fill="rgba(10,92,90,0.15)"/>
+        <!-- Pin body -->
+        <path d="M246 175 C236 175 228 183 228 193 C228 208 246 220 246 220 C246 220 264 208 264 193 C264 183 256 175 246 175Z" fill="#0A5C5A"/>
+        <!-- Pin inner circle -->
+        <circle cx="246" cy="193" r="7" fill="white"/>
+        <!-- Pin cross -->
+        <line x1="246" y1="189" x2="246" y2="197" stroke="#0A5C5A" stroke-width="2" stroke-linecap="round"/>
+        <line x1="242" y1="193" x2="250" y2="193" stroke="#0A5C5A" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- Nearby label -->
+        <text x="196" y="268" fill="#0A5C5A" font-size="8" font-family="sans-serif" font-weight="700" text-anchor="middle" transform="translate(50,0)">DermAvenue</text>
+        <text x="196" y="278" fill="#3d7a77" font-size="6.5" font-family="sans-serif" text-anchor="middle" transform="translate(50,0)">Khar West</text>
+
+        <!-- Farmers cafe nearby dot -->
+        <circle cx="190" cy="195" r="4" fill="#C5A880"/>
+        <text x="160" y="193" fill="#8FAF9F" font-size="6.5" font-family="sans-serif">Farmers Café</text>
+
+        <!-- Khar Station dot -->
+        <circle cx="328" cy="92" r="5" fill="#0A5C5A" opacity="0.5"/>
+        <text x="290" y="76" fill="#3d7a77" font-size="7" font-family="sans-serif" font-weight="600">Khar Stn.</text>
+
+        <!-- Compass -->
+        <circle cx="460" cy="44" r="20" fill="white" opacity="0.8"/>
+        <text x="460" y="38" fill="#0A5C5A" font-size="9" font-family="sans-serif" font-weight="700" text-anchor="middle">N</text>
+        <line x1="460" y1="40" x2="460" y2="50" stroke="#0A5C5A" stroke-width="1.5"/>
+        <polygon points="460,26 456,36 464,36" fill="#0A5C5A"/>
+        <polygon points="460,56 456,46 464,46" fill="#d0dbd2"/>
+
+        <!-- Scale -->
+        <line x1="80" y1="360" x2="180" y2="360" stroke="#9aada0" stroke-width="1.5"/>
+        <line x1="80" y1="356" x2="80" y2="364" stroke="#9aada0" stroke-width="1.5"/>
+        <line x1="180" y1="356" x2="180" y2="364" stroke="#9aada0" stroke-width="1.5"/>
+        <text x="130" y="355" fill="#9aada0" font-size="7" font-family="sans-serif" text-anchor="middle">~250m</text>
+      </svg>
+
+      <!-- Map overlay card -->
+      <div class="map-overlay">
+        <div class="map-overlay-pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="map-overlay-name">DermAvenue Skin & Hair Clinic</div>
+          <div class="map-overlay-addr">Bhagwanti Heights, 1st Fl, 14th Road, Khar West · Near Farmers Café</div>
+        </div>
+        <a href="https://maps.google.com/?q=DermAvenue+Khar+West+Mumbai" target="_blank" class="map-directions-btn">Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== BOOKING CTA ==================== -->
+<div class="booking-band">
+  <div class="booking-band-inner">
+    <div class="booking-band-label">Ready to Begin Your Skin Journey?</div>
+    <h2 class="booking-band-heading">Book Your Consultation<br>with Dr. Ajay Today</h2>
+    <p class="booking-band-sub">Whether it's a cosmetic concern or a clinical skin condition — precise diagnosis and personalised care await you. Take the first step towards confident skin.</p>
+    <div class="booking-band-fee">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Consultation Fee: ₹1,500 · Book via WhatsApp or Call
+    </div>
+    <div class="booking-band-actions">
+      <a href="https://wa.me/919665669966?text=Hi%20DermAvenue%2C%20I%20would%20like%20to%20schedule%20a%20consultation%20with%20Dr.%20Ajay%20Nimbalkar.%20Please%20let%20me%20know%20the%20available%20slots." target="_blank" rel="noopener" class="btn-white">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book via WhatsApp
+      </a>
+      <a href="tel:09665669966" class="btn-ghost-white">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.6 2.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>
+        Call: 09665669966
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">DermAvenue Skin & Hair Clinic</div>
+      <div class="footer-brand-tag">Dr. Ajay Nimbalkar MD — Dermatologist & Hair Transplant Surgeon<br>Bhagwanti Heights, 1st Floor, 14th Road, Khar West, Mumbai 400052</div>
+      <div class="footer-reg">
+        <strong style="color:rgba(255,255,255,0.6);">Medical Registration:</strong> Maharashtra Medical Council (MMC) · Reg. No: 2013062115<br>
+        <strong style="color:rgba(255,255,255,0.6);">Member:</strong> Indian Association of Dermatologists, Venereologists &amp; Leprologists (IADVL)<br>
+        <strong style="color:rgba(255,255,255,0.6);">Qualification:</strong> MBBS, MD (Dermatology, Venereology &amp; Leprosy), Fellowship — Cosmetic Dermatology &amp; Hair Transplant Surgery
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#credentials">About Dr. Ajay</a></li>
+        <li><a href="#testimonials">Patient Reviews</a></li>
+        <li><a href="#contact">Contact & Hours</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Patient Information</div>
+      <ul class="footer-links">
+        <li><a href="#" onclick="openModal('privacy'); return false;">Privacy Policy</a></li>
+        <li><a href="#" onclick="openModal('terms'); return false;">Terms of Service</a></li>
+        <li><a href="#" onclick="openModal('confidentiality'); return false;">Patient Data Confidentiality</a></li>
+        <li><a href="#" onclick="openModal('refund'); return false;">Refund & Cancellation Policy</a></li>
+        <li><a href="#" onclick="openModal('lgbtq'); return false;">LGBTQ+ Patient Charter</a></li>
+      </ul>
+      <div style="margin-top:1.5rem;">
+        <div class="footer-col-title">Compliance</div>
+        <p style="font-size:0.72rem;color:rgba(255,255,255,0.35);line-height:1.65;">All patient data is handled in strict accordance with the Information Technology Act, 2000 and applicable Indian healthcare privacy regulations. Medical records are kept confidential and are not shared without patient consent.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copyright">© 2025 DermAvenue Skin & Hair Clinic · Dr. Ajay Nimbalkar. All rights reserved.</div>
+    <ul class="footer-compliance">
+      <li><a href="#" onclick="openModal('privacy'); return false;">Privacy Policy</a></li>
+      <li><a href="#" onclick="openModal('terms'); return false;">Terms of Service</a></li>
+      <li><a href="#" onclick="openModal('confidentiality'); return false;">Patient Data Confidentiality</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+<!-- ==================== LEGAL MODALS ==================== -->
+
+<!-- Privacy Policy -->
+<div class="modal-backdrop" id="modal-privacy" onclick="closeModalOnBackdrop(event, 'privacy')">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title-privacy">
+    <button class="modal-close" onclick="closeModal('privacy')" aria-label="Close">&#x2715;</button>
+    <div class="modal-gold-rule"></div>
+    <h2 class="modal-title" id="modal-title-privacy">Privacy Policy</h2>
+    <div class="modal-body">
+      <p>At DermAvenue Skin & Hair Clinic, <strong>the privacy of our patients is of paramount importance.</strong> All personal information collected during registration, consultation, or treatment — including name, contact details, medical history, and treatment records — is held in strict confidence and used solely for the purpose of providing medical care.</p>
+      <p>We do not sell, share, or disclose patient information to any third party, except where required by law or with the explicit written consent of the patient. Digital records are stored on secure, access-controlled systems and are accessible only to authorised clinical staff involved in your care.</p>
+      <p>Patients have the right to request a copy of their personal data at any time, and to request corrections or deletion of non-essential data, subject to applicable medical record-keeping obligations under Indian law.</p>
+      <p>This policy is governed by the <strong>Information Technology Act, 2000</strong>, the IT (Reasonable Security Practices) Rules, 2011, and all applicable Indian healthcare regulations. By consulting at DermAvenue, you acknowledge and consent to this policy.</p>
+    </div>
+    <div class="modal-footer-note">Last updated: 2025 · DermAvenue Skin & Hair Clinic, Khar West, Mumbai</div>
+  </div>
+</div>
+
+<!-- Terms of Service -->
+<div class="modal-backdrop" id="modal-terms" onclick="closeModalOnBackdrop(event, 'terms')">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title-terms">
+    <button class="modal-close" onclick="closeModal('terms')" aria-label="Close">&#x2715;</button>
+    <div class="modal-gold-rule"></div>
+    <h2 class="modal-title" id="modal-title-terms">Terms of Service</h2>
+    <div class="modal-body">
+      <p>By booking an appointment or availing services at DermAvenue Skin & Hair Clinic, you agree to these Terms of Service. <strong>All consultations and treatments are provided at the professional discretion of Dr. Ajay Nimbalkar</strong>, who holds the right to determine the appropriate course of care based on clinical assessment.</p>
+      <p>Patients are required to provide accurate and complete medical histories, including current medications, known allergies, and prior conditions. DermAvenue shall not be held liable for adverse outcomes arising from withheld or inaccurate medical information provided by the patient.</p>
+      <p>Treatment outcomes may vary between individuals. While every effort is made to achieve the best possible results, the clinic does not guarantee specific cosmetic or clinical outcomes. Informed consent shall be obtained prior to all procedural treatments.</p>
+      <p>This website and its content are provided for <strong>general informational purposes only</strong> and do not constitute medical advice. Visitors should seek professional consultation before commencing any treatment.</p>
+    </div>
+    <div class="modal-footer-note">Last updated: 2025 · DermAvenue Skin & Hair Clinic, Khar West, Mumbai</div>
+  </div>
+</div>
+
+<!-- Patient Data Confidentiality -->
+<div class="modal-backdrop" id="modal-confidentiality" onclick="closeModalOnBackdrop(event, 'confidentiality')">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title-confidentiality">
+    <button class="modal-close" onclick="closeModal('confidentiality')" aria-label="Close">&#x2715;</button>
+    <div class="modal-gold-rule"></div>
+    <h2 class="modal-title" id="modal-title-confidentiality">Patient Data Confidentiality</h2>
+    <div class="modal-body">
+      <p>DermAvenue Skin & Hair Clinic is committed to maintaining the <strong>highest standards of patient data confidentiality</strong>. All clinical records, photographs, investigation reports, prescription data, and personal identifiers are treated as strictly confidential medical information.</p>
+      <p>Patient records are never shared with any external party — including pharmaceutical companies, research institutions, or media — without the patient's explicit prior written consent. Clinical photographs used for treatment progress documentation are stored securely and are not published or shared without express approval.</p>
+      <p>Staff members are bound by confidentiality agreements and receive regular training on data protection protocols. Access to patient files is strictly limited to treating clinical personnel on a need-to-know basis.</p>
+      <p>In compliance with the <strong>Information Technology Act, 2000</strong> and applicable healthcare regulations, all digital data is encrypted and stored on secure, access-controlled servers. Breach incidents, if any, will be disclosed to affected patients in accordance with legal requirements.</p>
+    </div>
+    <div class="modal-footer-note">Last updated: 2025 · DermAvenue Skin & Hair Clinic, Khar West, Mumbai</div>
+  </div>
+</div>
+
+<!-- Refund & Cancellation Policy -->
+<div class="modal-backdrop" id="modal-refund" onclick="closeModalOnBackdrop(event, 'refund')">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title-refund">
+    <button class="modal-close" onclick="closeModal('refund')" aria-label="Close">&#x2715;</button>
+    <div class="modal-gold-rule"></div>
+    <h2 class="modal-title" id="modal-title-refund">Refund & Cancellation Policy</h2>
+    <div class="modal-body">
+      <p><strong>Consultation fees are non-refundable</strong> once a consultation has been conducted. The consultation fee of ₹1,500 covers the clinical assessment, diagnosis, and treatment planning provided by Dr. Ajay Nimbalkar during the appointment.</p>
+      <p>Appointments cancelled at least <strong>24 hours prior</strong> to the scheduled time may be rescheduled without penalty, subject to availability. Cancellations with less than 24 hours' notice may result in forfeiture of any advance payment or booking deposit.</p>
+      <p>For procedural treatments (e.g., laser sessions, chemical peels, hair transplant procedures), a treatment deposit may be collected at the time of booking. Refunds on procedural deposits are considered on a case-by-case basis at the clinic's discretion, particularly in cases of documented medical contraindications.</p>
+      <p>To cancel or reschedule an appointment, please contact the clinic directly via WhatsApp or phone at <strong>09665669966</strong> at the earliest convenience.</p>
+    </div>
+    <div class="modal-footer-note">Last updated: 2025 · DermAvenue Skin & Hair Clinic, Khar West, Mumbai</div>
+  </div>
+</div>
+
+<!-- LGBTQ+ Patient Charter -->
+<div class="modal-backdrop" id="modal-lgbtq" onclick="closeModalOnBackdrop(event, 'lgbtq')">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title-lgbtq">
+    <button class="modal-close" onclick="closeModal('lgbtq')" aria-label="Close">&#x2715;</button>
+    <div class="modal-gold-rule"></div>
+    <h2 class="modal-title" id="modal-title-lgbtq">LGBTQ+ Patient Charter</h2>
+    <div class="modal-body">
+      <p>DermAvenue Skin & Hair Clinic is <strong>a safe, inclusive, and affirming space for all patients</strong>, regardless of sexual orientation, gender identity, gender expression, or relationship structure. Every patient who walks through our doors deserves — and will receive — equal, respectful, and compassionate care.</p>
+      <p>Dr. Ajay Nimbalkar and our clinical team are committed to providing <strong>non-judgmental dermatological and aesthetic care</strong> to LGBTQ+ individuals. We understand that healthcare experiences can be fraught with anxiety for many members of the community, and we are dedicated to making every consultation feel safe and dignified.</p>
+      <p>Patients are welcome to use their preferred name and pronouns at all times. Clinical decisions are made purely on the basis of medical need and patient preferences — never on the basis of identity. Transgender and non-binary patients seeking gender-affirming skincare, laser hair removal, or aesthetic treatments will receive the same standard of excellence as all our patients.</p>
+      <p>Discrimination of any kind is <strong>strictly prohibited</strong> within our clinic premises and will not be tolerated from staff, patients, or visitors. We encourage open communication and invite all patients to share any concerns about their care experience with us directly.</p>
+    </div>
+    <div class="modal-footer-note">DermAvenue Skin & Hair Clinic — Khar West, Mumbai · A Judgment-Free Clinical Space</div>
+  </div>
+</div>
+
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // Mobile Nav
+  function openMobileNav() {
+    document.getElementById('mobileNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Tabs
+  function switchTab(event, tabId) {
+    // Remove active from all buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+    // Activate clicked
+    event.currentTarget.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+  }
+
+  // Intersection Observer for subtle fade-in
+  const observerOptions = {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Apply initial styles and observe
+  const animTargets = document.querySelectorAll('.service-item, .tcard, .cert-card, .timeline-item, .clinic-card, .hours-card');
+  animTargets.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = `opacity 0.55s ease ${(i % 8) * 0.06}s, transform 0.55s ease ${(i % 8) * 0.06}s`;
+    observer.observe(el);
+  });
+
+  // Respect reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animTargets.forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.transition = 'none';
+    });
+  }
+
+  // ===== LEGAL MODALS =====
+  const MODAL_IDS = ['privacy', 'terms', 'confidentiality', 'refund', 'lgbtq'];
+
+  function openModal(id) {
+    const backdrop = document.getElementById('modal-' + id);
+    if (!backdrop) return;
+    document.body.style.overflow = 'hidden';
+    backdrop.classList.add('open');
+    // focus the close button for accessibility
+    setTimeout(() => {
+      const closeBtn = backdrop.querySelector('.modal-close');
+      if (closeBtn) closeBtn.focus();
+    }, 50);
+  }
+
+  function closeModal(id) {
+    const backdrop = document.getElementById('modal-' + id);
+    if (!backdrop) return;
+    backdrop.classList.remove('open');
+    // Restore scroll only if no other modals are open
+    const anyOpen = MODAL_IDS.some(mid => {
+      const el = document.getElementById('modal-' + mid);
+      return el && el.classList.contains('open');
+    });
+    if (!anyOpen) document.body.style.overflow = '';
+  }
+
+  function closeModalOnBackdrop(event, id) {
+    // Only close if the click is directly on the backdrop, not the inner box
+    if (event.target === document.getElementById('modal-' + id)) {
+      closeModal(id);
+    }
+  }
+
+  // Close modals on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      MODAL_IDS.forEach(id => closeModal(id));
+    }
+  });</script>
+
+</body>
+</html>
